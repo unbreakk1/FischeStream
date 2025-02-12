@@ -34,7 +34,7 @@ public class Main
                 .map(number -> number * 2)
                 .collect(Collectors.toList()); // very long for : .toList();
 
-        System.out.println("Doubled Numbers: " + doubledNumbers);
+        System.out.println("Doubled Numbers List: " + doubledNumbers);
 
     }
 }
