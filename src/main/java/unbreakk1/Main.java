@@ -1,8 +1,12 @@
 package unbreakk1;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main
 {
@@ -32,8 +36,34 @@ public class Main
         // To new list
         List<Integer> doubledNumbers = numbers.stream()
                 .map(number -> number * 2)
-                .collect(Collectors.toList()); // very long for : .toList();
+                .toList(); // .collect(Collectors.toList())
 
         System.out.println("Doubled Numbers List: " + doubledNumbers);
+
+        //========================================BONUS===============================
+
+        Path filePath = Path.of("students.csv");
+
+        // read each line
+        try (Stream<String> lines = Files.lines(filePath))
+        {
+            lines.forEach(System.out::println);
+        }
+        catch (IOException e)
+        {
+            System.err.println("Error reading the file: " + e.getMessage());
+        }
+
+        // remove header
+        try (Stream<String> lines = Files.lines(filePath))
+        {
+            lines.skip(1)
+                    .forEach(System.out::println);
+        }
+        catch (IOException e)
+        {
+            System.err.println("Error reading the file: " + e.getMessage());
+        }
+
     }
 }
