@@ -26,15 +26,14 @@ public class Main
 
         // Sum
         int sum = numbers.stream()
-                .reduce(0, Integer::sum);           // (a, b) -> a + b
+                .reduce(0, Integer::sum);  // (a, b) -> a + b
         System.out.println("Sum of all numbers: " + sum);
 
-        // to new list
+        // To new list
         List<Integer> doubledNumbers = numbers.stream()
                 .map(number -> number * 2)
                 .collect(Collectors.toList()); // very long for : .toList();
 
         System.out.println("Doubled Numbers List: " + doubledNumbers);
-
     }
 }
